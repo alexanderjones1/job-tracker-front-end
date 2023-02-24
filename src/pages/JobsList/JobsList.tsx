@@ -5,33 +5,33 @@ import { useState, useEffect } from 'react'
 import * as jobService from '../../services/jobService'
 
 // types
-import { Profile } from '../../types/models'
+import { Job } from '../../types/models'
 
-const Profiles = (): JSX.Element => {
-  const [profiles, setProfiles] = useState<Profile[]>([])
+const Jobs = (): JSX.Element => {
+  const [jobs, setJobs] = useState<Job[]>([])
 
   useEffect((): void => {
-    const fetchProfiles = async (): Promise<void> => {
+    const fetchJobs = async (): Promise<void> => {
       try {
-        const profileData: Profile[] = await profileService.getAllProfiles()
-        setProfiles(profileData)
+        const jobData: Job[] = await jobService.getAllJobs()
+        setJobs(jobData)
       } catch (error) {
         console.log(error)
       }
     }
-    fetchProfiles()
+    fetchJobs()
   }, [])
 
-  if(!profiles.length) return <p>No profiles yet</p>
+  if(!jobs.length) return <p>No jobs yet</p>
 
   return (
     <>
-      <h1>Hello. This is a list of all the profiles.</h1>
-      {profiles.map((profile: Profile) =>
-        <p key={profile.id}>{profile.name}</p>
+      <h1>Hello. This is a list of all the jobs.</h1>
+      {jobs.map((job: Job) =>
+        <p key={job.id}>{job.title}</p>
       )}
     </>
   )
 }
- 
-export default Profiles
+
+export default Jobs
