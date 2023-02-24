@@ -7,6 +7,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
+import Jobs from './pages/Jobs/Jobs'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 
 // components
@@ -55,6 +56,14 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <Profiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/jobs"
+          element={
+            <ProtectedRoute user={user}>
+              <Jobs />
             </ProtectedRoute>
           }
         />
