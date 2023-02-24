@@ -7,6 +7,9 @@ import * as jobService from '../../services/jobService'
 // types
 import { Job } from '../../types/models'
 
+//components
+import JobCard from '../../components/JobCard/JobCard'
+
 const Jobs = (): JSX.Element => {
   const [jobs, setJobs] = useState<Job[]>([])
 
@@ -28,7 +31,10 @@ const Jobs = (): JSX.Element => {
     <>
       <h1>Hello. This is a list of all the jobs.</h1>
       {jobs.map((job: Job) =>
-        <p key={job.id}>{job.title}</p>
+        <JobCard 
+          key={job.id}
+          job={job}
+          />
       )}
     </>
   )
