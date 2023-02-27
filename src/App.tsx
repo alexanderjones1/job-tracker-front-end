@@ -45,6 +45,7 @@ function App(): JSX.Element {
   const handleNewJob = async (data: any): Promise<void> => {
     const newJob: Job = await jobService.create(data);
     setJobs((prevJobs) => [newJob, ...prevJobs]);
+    await jobService.getAllJobs().then(setJobs);
     navigate('/jobs');
   };
   

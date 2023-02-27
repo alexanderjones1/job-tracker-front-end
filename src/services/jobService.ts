@@ -21,12 +21,17 @@ const create = async (formData: any): Promise<Job> => {
   try {
     const res = await fetch(BASE_URL, {
       method: 'POST',
-      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
     }) 
     return await res.json() as Job
   } catch (error) {
     throw error
   }
 }
+
 
 export { getAllJobs, create }

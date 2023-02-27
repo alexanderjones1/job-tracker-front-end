@@ -13,7 +13,7 @@ const NewJob = ({ handleNewJob }: Props) => {
   const [stillHiring, setStillHiring] = useState(true);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault();   
 
     const newJob: Job = await jobService.create({
       title,
