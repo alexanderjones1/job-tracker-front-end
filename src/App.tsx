@@ -8,6 +8,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import Jobs from './pages/Jobs/Jobs'
+import NewJob from './pages/NewJob/NewJob'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 
 // components
@@ -16,17 +17,20 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as jobService from './services/jobService'
 
 // stylesheets
 import './App.css'
 
 // types
 import { User } from './types/models'
+import { Job } from './types/models'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
   
   const [user, setUser] = useState<User | null>(authService.getUser())
+  const [jobs, setJobs] = useState<Job[]>([])
 
   const handleLogout = (): void => {
     authService.logout()
@@ -37,6 +41,13 @@ function App(): JSX.Element {
   const handleAuthEvt = (): void => {
     setUser(authService.getUser())
   }
+
+  const handleNewJob = async (data: any): Promise<void> => {
+    const newJob: Job = await jobService.create(data);
+    setJobs((prevJobs) => [newJob, ...prevJobs]);
+    navigate('/jobs');
+  };
+  
 
   return (
     <>
@@ -67,6 +78,14 @@ function App(): JSX.Element {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/jobs/new"
+          element={
+            <ProtectedRoute user={user}>
+              <NewJob handleNewJob={handleNewJob} />
+            </ProtectedRoute>
+          }
+        /> 
         <Route
           path="/change-password"
           element={

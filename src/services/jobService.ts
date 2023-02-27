@@ -17,4 +17,16 @@ async function getAllJobs(): Promise<Job[]> {
   }
 }
 
-export { getAllJobs }
+const create = async (formData: any): Promise<Job> => {
+  try {
+    const res = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    }) 
+    return await res.json() as Job
+  } catch (error) {
+    throw error
+  }
+}
+
+export { getAllJobs, create }
