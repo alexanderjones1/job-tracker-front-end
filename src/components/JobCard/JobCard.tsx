@@ -11,6 +11,7 @@ interface JobCardProps {
 
 const JobCard = (props: JobCardProps): JSX.Element => {
   const { job } = props
+  console.log(job)
 
   return (
     <article>
