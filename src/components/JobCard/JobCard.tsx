@@ -5,6 +5,9 @@ import defaultPic from '../../assets/icons/profile.png'
 import { Job } from '../../types/models'
 import { Profile } from '../../types/models'
 
+// styles
+import styles from './JobCard.module.css'
+
 interface JobCardProps {
   job: Job,
 }
@@ -14,12 +17,18 @@ const JobCard = (props: JobCardProps): JSX.Element => {
   console.log(job.stillHiring)
 
   return (
-    <>
+    <main className={styles.Container}>
       <h1>{job.title}</h1>
-      <p>${job.salary}</p>
-      <p>{job.description}</p>
-      <p>{job.stillHiring}</p>
-    </>
+      <div>
+        <p>Salary: ${job.salary}</p>
+      </div>
+        <p>Description: {job.description}</p>
+      <div>
+      </div>
+      <div>
+        <p>{job.stillHiring? '' : 'This job has been filled'}</p>
+      </div>
+    </main>
   )
 }
 
