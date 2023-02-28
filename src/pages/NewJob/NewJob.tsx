@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { Job } from '../../types/models';
 import * as jobService from '../../services/jobService';
 
+// styles
+import styles from './NewJob.module.css'
+
 type Props = {
   handleNewJob: (job: Job) => void;
 };
@@ -26,25 +29,27 @@ const NewJob = ({ handleNewJob }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Title:
-        <input type="text" value={title} onChange={event => setTitle(event.target.value)} />
-      </label>
-      <label>
-        Salary:
-        <input type="number" value={salary} onChange={event => setSalary(parseInt(event.target.value))} />
-      </label>
-      <label>
-        Description:
-        <input type="text" value={description} onChange={event => setDescription(event.target.value)} />
-      </label>
-      <label>
-        Still Hiring:
-        <input type="checkbox" checked={stillHiring} onChange={event => setStillHiring(event.target.checked)} />
-      </label>
-      <button type="submit">Create Job</button>
-    </form>
+    <main className={styles.Container}>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Title:
+          <input type="text" value={title} onChange={event => setTitle(event.target.value)} />
+        </label>
+        <label>
+          Salary:
+          <input type="number" value={salary} onChange={event => setSalary(parseInt(event.target.value))} />
+        </label>
+        <label>
+          Description:
+          <input type="text" value={description} onChange={event => setDescription(event.target.value)} />
+        </label>
+        <label>
+          Still Hiring:
+          <input type="checkbox" checked={stillHiring} onChange={event => setStillHiring(event.target.checked)} />
+        </label>
+        <button type="submit">Create Job</button>
+      </form>
+    </main>
   );
 };
 
