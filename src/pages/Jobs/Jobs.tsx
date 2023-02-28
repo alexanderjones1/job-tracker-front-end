@@ -26,6 +26,21 @@ const Jobs = (): JSX.Element => {
     fetchJobs()
   }, [])
 
+  const handleUpdateJob = async (id: number): Promise<void> => {
+    try {
+      const updatedJobData: Job = await jobService.update(id)
+      setJobs(jobs.map((j) => {
+        if (j.id === updatedJobData.id) {
+          return updatedJobData
+        } else {
+          return j
+        }
+      }))
+    } catch (error) {
+      throw error
+    }
+  }
+console.log(jobs)
 
   if(!jobs.length) return <p>No jobs yet</p>
 
@@ -33,7 +48,17 @@ const Jobs = (): JSX.Element => {
     <>
       <h1>Hello. This is a list of all the jobs.</h1>
       {jobs.map((job: Job) => (
+      <div>
+
         <JobCard key={job.id} job={job} />
+        {job.stillHiring &&
+          <button
+            onClick={(evt: React.MouseEvent<HTMLButtonElement>) => handleUpdateJob(job.id)}
+            >
+              Filled
+          </button>
+        }
+      </div>
       ))}
     </>
   )

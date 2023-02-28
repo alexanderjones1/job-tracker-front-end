@@ -11,15 +11,15 @@ interface JobCardProps {
 
 const JobCard = (props: JobCardProps): JSX.Element => {
   const { job } = props
-  console.log(job)
+  console.log(job.stillHiring)
 
   return (
-    <article>
+    <>
       <h1>{job.title}</h1>
-      <p>{job.salary}</p>
+      <p>${job.salary}</p>
       <p>{job.description}</p>
       <p>{job.stillHiring}</p>
-    </article>
+    </>
   )
 }
 

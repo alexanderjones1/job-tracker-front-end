@@ -49,7 +49,6 @@ function App(): JSX.Element {
     navigate('/jobs');
   };
   
-
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -86,7 +85,7 @@ function App(): JSX.Element {
               <NewJob handleNewJob={handleNewJob} />
             </ProtectedRoute>
           }
-        /> 
+        />
         <Route
           path="/change-password"
           element={

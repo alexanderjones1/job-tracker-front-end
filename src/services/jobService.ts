@@ -33,5 +33,20 @@ const create = async (formData: any): Promise<Job> => {
   }
 }
 
+async function update(jobId: number): Promise<Job> {
+  const response = await fetch(`${BASE_URL}/${jobId}`, {
+    method: "PUT",
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    },
+  });
+  if (!response.ok) {
+    throw new Error("Failed to update job.");
+  }
+  const updatedJob: Job = await response.json();
+  return updatedJob;
+}
 
-export { getAllJobs, create }
+
+export { getAllJobs, create, update }
+
