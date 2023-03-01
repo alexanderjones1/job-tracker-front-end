@@ -5,14 +5,19 @@ import { useState, useEffect } from 'react'
 import * as jobService from '../../services/jobService'
 
 // types
-import { Job } from '../../types/models'
+import { Job, User } from '../../types/models'
 
 //components
 import JobCard from '../../components/JobCard/JobCard'
 import NewJob from '../NewJob/NewJob'
 
-const Jobs = (): JSX.Element => {
+interface JobsProps{
+  user: User 
+}
+
+const Jobs = (props: JobsProps): JSX.Element => {
   const [jobs, setJobs] = useState<Job[]>([])
+  const { user } = props
 
   useEffect(() => {
     const fetchJobs = async (): Promise<void> => {
@@ -48,15 +53,20 @@ console.log(jobs)
     <>
       <h1>Hello. This is a list of all the jobs.</h1>
       {jobs.map((job: Job) => (
-      <div>
+        <div>
 
-        <JobCard key={job.id} job={job} />
-        {job.stillHiring &&
+        <JobCard key={job.id} job={job} user={user}/>
+        {job.stillHiring && user.profile.id === job?.profileId ?
+        <>
           <button
-            onClick={(evt: React.MouseEvent<HTMLButtonElement>) => handleUpdateJob(job.id)}
-            >
+          onClick={(evt: React.MouseEvent<HTMLButtonElement>) => handleUpdateJob(job.id)}
+          >
               Filled
           </button>
+        </>
+        :
+        <>
+        </>
         }
       </div>
       ))}

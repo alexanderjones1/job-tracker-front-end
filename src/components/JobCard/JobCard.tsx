@@ -1,8 +1,10 @@
+import { useState } from 'react'
+
 // assets
 import defaultPic from '../../assets/icons/profile.png'
 
 // types
-import { Job } from '../../types/models'
+import { Job, User } from '../../types/models'
 import { Profile } from '../../types/models'
 
 // styles
@@ -10,11 +12,11 @@ import styles from './JobCard.module.css'
 
 interface JobCardProps {
   job: Job,
+  user: User,
 }
 
 const JobCard = (props: JobCardProps): JSX.Element => {
-  const { job } = props
-  console.log(job.stillHiring)
+  const { job, user } = props
 
   return (
     <main className={styles.Container}>
