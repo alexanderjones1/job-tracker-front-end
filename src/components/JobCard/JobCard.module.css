@@ -11,7 +11,7 @@
   border: 1px solid gray;
   background-color: whitesmoke;
   border-radius: 8px;
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  box-shadow: rgba(239, 239, 63, 0.4) 5px 5px, rgba(239, 239, 63, 0.4) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(239, 239, 63, 0.4)20px 20px, rgba(239, 239, 63, 0.4) 25px 25px;
 }
 
 .Container h1 {
@@ -20,4 +20,8 @@
 
 .Container p {
   text-align: left;
+}
+
+.jobCards {
+  display: flex;
 }

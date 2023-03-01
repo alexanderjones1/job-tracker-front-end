@@ -6,6 +6,7 @@ import { User } from '../../types/models'
 
 // Services
 import * as authService from '../../services/authService'
+import { Link } from 'react-router-dom';
 
 interface LandingProps {
   user: User | null;
@@ -21,13 +22,17 @@ const Landing = ({ user, handleLogout }: LandingProps): JSX.Element => {
 
   return (
     <main className={styles.container}>
-      <h1>Hello {user ? user.name : 'friend'}!</h1>
-
-      { user && 
-        <button onClick={handleDeleteAccount}>
-          DELETE ACCOUNT
-        </button>
-      }
+      <div className={styles.heroDiv}>
+        <h1 className={styles.welcome}>Hello {user ? user.name : 'friend'}!</h1>
+        {/* <h3 className={styles.search}>Lets see some jobs!</h3> */}
+        <Link className={styles.search} to={`/jobs`}>Lets see some jobs!</Link>
+        {/* <Link className={styles.Link} to={`/experiences/${id}/edit`} state={experience}>Update Exerience</Link> */}
+        { user && 
+          <button onClick={handleDeleteAccount}>
+            DELETE ACCOUNT
+          </button>
+        }
+      </div>
     </main>
   )
 }

@@ -11,6 +11,9 @@ import { Job, User } from '../../types/models'
 import JobCard from '../../components/JobCard/JobCard'
 import NewJob from '../NewJob/NewJob'
 
+// styles
+import styles from './Jobs.module.css'
+
 interface JobsProps{
   user: User 
 }
@@ -50,9 +53,9 @@ const Jobs = (props: JobsProps): JSX.Element => {
 
   return (
     <>
-      <h1>Hello. This is a list of all the jobs.</h1>
+      <h1 className={styles.header}>JOBS LIST</h1>
       {jobs.map((job: Job) => (
-        <div>
+        <div className={styles.job}>
 
         <JobCard key={job.id} job={job} user={user}/>
         {job.stillHiring && user.profile.id === job?.profileId ?

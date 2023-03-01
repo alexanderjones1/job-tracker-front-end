@@ -1,0 +1,17 @@
+.job {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+}
+
+.job button {
+  width: 60px;
+  margin-top: -15px;
+  border-radius: 8px;
+  background-color: rgb(14, 216, 216);
+}
+
