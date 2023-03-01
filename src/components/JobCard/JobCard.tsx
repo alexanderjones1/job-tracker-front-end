@@ -1,11 +1,5 @@
-import { useState } from 'react'
-
-// assets
-import defaultPic from '../../assets/icons/profile.png'
-
 // types
 import { Job, User } from '../../types/models'
-import { Profile } from '../../types/models'
 
 // styles
 import styles from './JobCard.module.css'
