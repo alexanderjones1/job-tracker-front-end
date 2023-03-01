@@ -9,13 +9,12 @@ import { Job, User } from '../../types/models'
 
 //components
 import JobCard from '../../components/JobCard/JobCard'
-import NewJob from '../NewJob/NewJob'
 
 // styles
 import styles from './Jobs.module.css'
 
 interface JobsProps{
-  user: User 
+  user: User
 }
 
 const Jobs = (props: JobsProps): JSX.Element => {
