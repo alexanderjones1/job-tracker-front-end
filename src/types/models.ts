@@ -26,7 +26,7 @@ export interface Job {
   salary: number;
   description: string,
   stillHiring: boolean,
-  profile: { id: number },
+  profileId: number,
   id: number;
   createdAt: string;
   updatedAt: string;

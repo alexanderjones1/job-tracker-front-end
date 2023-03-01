@@ -45,7 +45,6 @@ const Jobs = (props: JobsProps): JSX.Element => {
       throw error
     }
   }
-console.log(jobs)
 
   if(!jobs.length) return <p>No jobs yet</p>
 
